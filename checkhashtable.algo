@@ -1,0 +1,25 @@
+ALGORITHM checkpoint_hashtable(t:ARRAY_OF INTEGER)
+VAR
+    htab: HASH_TABLE<INTEGER,INTEGER>;
+    nboccur:INTEGER;
+    i:INTEGER;
+    sum:INTEGER;  
+    key:INTEGER;
+BEGIN
+    FOR i FROM 0 TO t.length-1 STEP 1  DO
+       IF (htab.lookup(t[i])=true) THEN
+           nboccur:=htab.get(t[i]);
+           htab.insert(t[i],nboccur+1);
+        ELSE
+        htab.insert(t[i],1);
+       END_IF 
+    END_FOR
+
+    FOR (i in htab.keys; ++i) 
+        key=htab.keys
+        IF (htab.get(key)= 1) THEN
+            sum=sum+ key;
+        END_IF () 
+    END_FOR
+    write(sum);
+END

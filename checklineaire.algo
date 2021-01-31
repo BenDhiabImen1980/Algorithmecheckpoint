@@ -1,0 +1,64 @@
+ALGORITHM checkpoint_Lineaire
+VAR
+   var i, j:INTEGER;
+   t : ARRAY_OF INTEGER [length];
+   t1 : ARRAY_OF INTEGER[length];
+   etat: BOOLEAN;
+   sum:INTEGER;
+BEGIN
+    i=0;
+    j=0;
+    sum=0
+    WHILE (i<t.length) DO               /*boucle de parcours du 1er tableau*/
+        j=0;
+        WHILE (j<t1.length) DO          /*boucle de parcours du 2eme tableau*/
+
+            IF (t[i]=t1[j]) THEN        /*comparaison element par element et affecter letat duplique ou non duplique*/
+               etat=false;
+            ELSE
+               etat=true;
+            END_IF ()
+
+            IF (etat=false) THEN        /*sil est duplique pas la peine de continuer il quitte la 2eme boucle while*/
+               break;
+            ELSE
+               j=j+1;                   /*sinon il continue le parcours*/
+            END_IF ()
+
+        END_WHILE
+        IF (etat=true) THEN             /*il sort de la boucle soit parceque etat= false soit le compteur atteint la fin du tableau */
+           sum=sum+t[i];                /* si etat=true il ajoute la valeur à sum sinon il continue le parcours dans le 1er arry*/
+        END_IF
+        i=i+1;
+    END_WHILE 
+
+    /* on a additionne que les elements du 1er arry il faut refaire le meme travail avec le 2eme arry!!*/
+
+    i=0;
+    j=0;
+    WHILE (i<t1.length) DO               /*boucle de parcours du 2eme tableau*/
+        j=0;
+        WHILE (j<t.length) DO          /*boucle de parcours du 1er tableau*/
+
+            IF (t1[i]=t[j]) THEN        /*comparaison element par element et affecter letat duplique ou non duplique*/
+               etat=false;
+            ELSE
+               etat=true;
+            END_IF ()
+
+            IF (etat=false) THEN        /*sil est duplique pas la peine de continuer il quitte la 2eme boucle while*/
+               break;
+            ELSE
+               j=j+1;                   /*sinon il continue le parcours*/
+            END_IF ()
+
+        END_WHILE
+        IF (etat=true) THEN             /*il sort de la boucle soit parceque etat= false soit le compteur atteint la fin du tableau */
+           sum=sum+t1[i];                /* si etat=true il ajoute la valeur à sum sinon il continue le parcours dans le 2eme arry*/
+        END_IF
+        i=i+1;
+    END_WHILE 
+
+    write (sum);
+   
+END
