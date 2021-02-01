@@ -1,0 +1,31 @@
+PROCEDURE dot_product(U,V:ARRAY_OF INTEGER, ps:FLOAT)
+VAR
+   i:INTEGER;
+BEGIN
+    ps=0
+    IF (u.length=v.length) THEN   
+        FOR i FROM min TO U.length- STEP 1  DO
+            ps=ps+U[i]*v[i]
+        END_FOR
+    END_IF
+END  
+
+ALGORITHM Produit scalaire()
+VAR
+    arr1: ARRAY_OF FLOAT[3];
+    arr2: ARRAY_OF FLOAT[3];
+    produit_scal:FLOAT;
+BEGIN
+    produit_scal=0;
+    FOR i FROM 0 TO 2 STEP 1  DO
+        write("donner l element" +i+1 + " du vecteur arr1")
+        read( arr1[i]);
+        write("donner l element" +i+1 + " du vecteur arr2")
+        read( arr2[i]);
+    END_FOR
+    dot_product(arr1,arr2,produit_scal);       /*Passage par valeur*/
+    IF produit_scal=0 THEN
+       write("les deux vecteurs sont orthogonaux")
+    END_IF
+    
+END
